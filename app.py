@@ -18,12 +18,12 @@ def upload():
 	This route saves the file uploaded in the form and returns the same file 
 	in the response
 	'''
-	content = request.files['file']
-	filename = secure_filename(content.filename)
-	content.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+	file = request.files['file']
+	filename = secure_filename(file.filename)
+	file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 	return render_template('show-image.html', filename=filename)
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def home():
 	''' 
 	This route renders the HTML page to show basic form for file upload
