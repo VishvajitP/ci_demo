@@ -1,7 +1,7 @@
 ''' 
 Module to test upload functionality
 '''
-
+import os
 import unittest
 from app import app
 from cStringIO import StringIO
