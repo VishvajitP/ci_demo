@@ -9,6 +9,9 @@ class UploadTest(unittest.TestCase):
         self.app.config['TESTING'] = True
         self.client = self.app.test_client()
 
+    def tearDown(self):
+        pass
+
     def test_upload(self):
         filename = 'test.txt'
         filetext = StringIO('test me')
