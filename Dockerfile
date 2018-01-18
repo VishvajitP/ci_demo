@@ -1,6 +1,9 @@
 FROM python:2.7
-ADD . /code
-WORKDIR /code
+MAINTAINER Vishvajit Pathak "wishmore191@gmail.com.com"
+RUN apt-get update -y
+RUN apt-get install -y python-pip python-dev build-essential
+COPY . /app
+WORKDIR /app
 RUN pip install -r requirements.txt
-CMD ["python", "testfile.py"]
-CMD ["python", "app.py"]
+ENTRYPOINT ["python"]
+CMD ["app.py"]

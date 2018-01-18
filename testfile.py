@@ -11,7 +11,7 @@ class UploadTest(unittest.TestCase):
     def setUp(self):
         self.app = app
         self.app.config['TESTING'] = True
-        self.client = self.app.test_client()
+        self.client = app.test_client()
 
     def tearDown(self):
         pass
