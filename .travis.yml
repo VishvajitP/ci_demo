@@ -1,23 +1,22 @@
 sudo: required
-
 language: python
-
 python:
-  - "2.7"
-
+- '2.7'
 services:
-  - docker
-
+- docker
 before_script:
-  - docker-compose up --build -d
-
+- docker-compose up --build -d
 script:
-  - python testfile.py
-
+- python testfile.py
+- docker tag autocidemo:latest $DOCKER_HUB_USERNAME/autocidemo:production
+- docker push $DOCKER_HUB_USERNAME/autocidemo:production
 after_script:
-  - docker-compose down
-
-
+- docker-compose down
 notifications:
-  email: 
-    - vishvajit.pathak@gmail.com
+  email:
+  - vishvajit.pathak@gmail.com
+env:
+  global:
+  - secure: bforY0n52aVxbG2V1OZjE0ymLxvcHygjACQeUvp/fOdmujFzCqj8zQ0T+6quLzA/t3Xu1QJPTqhXZ8a6l8LVe1yCOVjmaZP6l4gi3nGXe2x56r03k39p6z78TRWk4V0pPetAPJ2F+uqixzTFwc/oyNUsoavJb2wDOLIU0SRd6Mmo6To91o0Z81DIUrOxq5TxYCXkpckyp11h4r5naZtYbgNrReSciI0PvkYYMJLEoiltIw2sL2vSgo++tIPUCtSx6Op1jpbBi2WA1dkc8f0dRdYz6PH3wU2tdg/EYddur+duuoy9S2R5Z4T8HW+kH/hrtjQCk9ddfUOd45qre6KZVJUQQqAus5K+Z8iOnU89Dq0O3omVlHRjGXu+7JdxalZNbx3MVa5IxjAK0Twjo+9wMwiTikTHnjYakJWjSb/ArXn8tGxgNx8FxvCEWIYsnxtIUb9hsqA/Tbt5aUgE7CZtKyJ7q2d7C9mZxYJbgOGbQLtpyimxJ28G61Pb3ACUtX7EzGpSWDxhbMzo4+GF9GAd0VRARJA8N0OnEoTlf9+TwTdBWS41MGGjUy+6VfTd4KtCNWUxm08bFHoR4KlTwxcg4sWVJkcTXfXLKKm7K0DjFiAO3lcIjJWkgorkZQgcwABe+TVm2f6FY5ICXrsfYlzeWLTIDzFJZ5YXlbtufrSx+8A=
+  - secure: OASoBOoXOQ19UDSCpRqXBl28nidEjBsv8ddSQXJiUYgAdkRCIy3PLBq600rl8p9Z2AAgzDTh36RVKrLPAjx0AIhH+PNnrJ5Tb4CEk1pbpH95uZEHWQgtYATbgbiCjOLE5vObfcXjURrKIgP0q8yuyGZGBM71ELFBnxK89MgRwNLU3SbZv4RbBnJ7ycbuHkhcjGlLZ2a/YN1M5+/EY4I6ooS26SWxHO/8VfpkdqiYetZmDb+fKvQdlY9W0nkV6z2+XaUjOYle6l1BHGI6UOZnN849HfPGoR49UnnlK27HIGDTqm8acnFInnolAMT2eCxV53XCbFbFCefuaUw50eI8oqjAj/TeCl36REleDE7i9a1ZZl8UuQy7L51aciDVKaboUXlPo4dahMRcdxjTD/u6SKQQz1aLqjbI1bV2WZHbdIIQdkxqU0ADkBmOfzPhHwV8DlIu5yWH4/6qYaokV606w+Kz+XN/DioJBDL4D/SB7B+MzL6M8//Y4GL+/rx5YeNZCp/HoFeEWnMuA2fQu+CQRgseuanomqDcn9n83Lby0NQqKU0Af8Wx18/PJPvuz/5sDn9fopMOsD7inc7ZRraUIQvKYE9Zx8VmAZrCmbwsQd1hBkYcZGj4BS+DJBeHNTKrtErJD7JX9ctkj5WlzYxaSbJde3vVNMtL1ycl8MpWbeA=
+  - secure: PhZdO06ib0Q7PhpNzjvsMQDhWsPqSTnEPDov1WJFqVNIIzJqNNTxPdzL+Nosb3+l069h+0ybKz+JtWgPgQhBd1NEWf0dJWjWt+ySfyu2+VMz0dtVyBv2bJXReCRP87dOti2VgiHtaIiwL9J7BXzIYsOl5inxpCK6WbBTAj6KzSZ38AIbPY6AdyEtYMRa0VAkjghwjTj+He/LJyoQ10IwwDRNmdJkRHFCs0K70A9UORhupbl+OVNDjM8hLM5n9XSTwNjh6xm4+MwbrmVyPJkG6hdsscQE1y+3Ol7xX+L3CqBtWv2Bmxq4PQWcKzSrlDYzqbJQu+M36uJHjbQ2Utg7iwKE/bKX4ttLFtWpvlnzC/0VjuQsK4mc3jxcsVpdr72Pn/7yJwyg6qeFVCCY/OOjN/UrWj8acLwnQIGo3b1BYMSZeS1KMnGDCj/FgQ50X5kWE2/g7slS9FF068l5Ik7+RL8gI11hjQjcGqjE9c1hTuHZJqRs3fSDok1U97ycKfYiWuqQezoN3Jw1tNOcq5t9CN2p88rb/L/NdUTNid0PwlRlAJvL6ZWFZe6Eqw+QYhllLCPePxGARrA1ibpms22ubNazwP0YLlPLgZnrthhdCsBrzgF12Z0moppZ4xGJ8/ffiD1kc7ofPkvW3OPVcZ0bKA1Cslc6vN2+vEF6y7CdqYY=
