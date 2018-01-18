@@ -8,13 +8,16 @@ python:
 services:
   - docker
 
-install:
-  - pip install -r requirements.txt
+before_script:
+  - docker-compose up --build -d
 
 script:
   - python testfile.py
 
+after_script:
+  - docker-compose down
+
+
 notifications:
   email: 
     - vishvajit.pathak@gmail.com
-
