@@ -1,9 +1,9 @@
-''' 
-This Module for contains the route for uploading a file and resturning the same 
+'''
+This Module for contains the route for uploading a file and resturning the same
 file data back in the response once stored.
 '''
 import os
-from flask import (Flask, 
+from flask import (Flask,
 				   render_template,
 				   request)
 from werkzeug.utils import secure_filename
@@ -14,8 +14,8 @@ app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path, 'static', 'img')
 
 @app.route('/', methods=['POST'])
 def upload():
-	''' 
-	This route saves the file uploaded in the form and returns the same file 
+	'''
+	This route saves the file uploaded in the form and returns the same file
 	in the response
 	'''
 	file = request.files['file']
@@ -25,10 +25,10 @@ def upload():
 
 @app.route("/", methods=['GET'])
 def home():
-	''' 
+	'''
 	This route renders the HTML page to show basic form for file upload
 	'''
 	return render_template('home.html')
 
-# app.run(debug=True, port=5050, host='0.0.0.0')
+app.run(port=5000, host='0.0.0.0')
 
