@@ -4,12 +4,14 @@ python:
 - '2.7'
 services:
 - docker
+addons:
+  ssh_known_hosts: 139.59.42.140
 before_script:
 - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
 - docker-compose up --build -d
 script:
 - python testfile.py
-- docker tag autocidemo:latest $DOCKER_HUB_USERNAME/autocidemo:production
+- docker tag autocidemo:production $DOCKER_HUB_USERNAME/autocidemo:production
 - docker push $DOCKER_HUB_USERNAME/autocidemo:production
 after_script:
 - docker-compose down
