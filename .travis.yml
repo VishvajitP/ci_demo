@@ -11,7 +11,7 @@ before_script:
 - docker-compose up --build -d
 script:
 - python testfile.py
-- docker tag autocidemo:production $DOCKER_HUB_USERNAME/autocidemo:production
+- docker tag $DOCKER_HUB_USERNAME/autocidemo:production $DOCKER_HUB_USERNAME/autocidemo:production
 - docker push $DOCKER_HUB_USERNAME/autocidemo:production
 after_script:
 - docker-compose down
