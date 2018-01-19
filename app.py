@@ -21,7 +21,7 @@ def upload():
 	file = request.files['file']
 	filename = secure_filename(file.filename)
 	file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-	return render_template('show-image.html', filename=filename)
+	return render_template('home.html', filename=filename)
 
 @app.route("/", methods=['GET'])
 def home():
@@ -31,5 +31,5 @@ def home():
 	return render_template('home.html')
 
 if __name__ == '__main__':
-	app.run(port=80, host='0.0.0.0')
+	app.run(port=5050, host='0.0.0.0')
 
