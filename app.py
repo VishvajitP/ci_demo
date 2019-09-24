@@ -22,12 +22,14 @@ def upload():
 	file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 	return render_template('home.html', filename=filename)
 
+
 @app.route("/", methods=['GET'])
 def home():
 	"""
 	This route renders the HTML page to show basic form for file upload.
 	"""
 	return render_template('home.html')
+
 
 if __name__ == '__main__':
 	app.run(port=5050, host='0.0.0.0')
