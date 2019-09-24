@@ -5,7 +5,7 @@
 </head>
 <body>
 	{% if filename %}
-		<img src="static/img/{{filename}}">
+		<img src="static/img/{{ filename }}">
 	{% else %}
 		<h2>Upload file</h2>
 		<form action="/" method="POST" enctype="multipart/form-data">
@@ -13,6 +13,5 @@
 		  <input type="submit">
 		</form>
 	{% endif %}
-
 </body>
 </html>
